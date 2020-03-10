@@ -31,7 +31,7 @@
             <td th:text="${item.defence}"></td>
             <td>
                 <form th:action="@{/items/merchant/{id}(id=${item.id})}" th:method="post">
-                    <button class="btn btn-info" onclick="hide()">Buy</button>
+                    <button class="btn btn-info">Buy</button>
                 </form>
             </td>
         </tr>
@@ -41,9 +41,4 @@
     <th:block th:insert="fragments/footer">
     </th:block>
 </body>
-<script>
-    function hide() {
-        document.getElementsByTagName('button')[0].style.display = 'none';
-    }
-</script>
 </html>

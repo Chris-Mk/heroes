@@ -1,11 +1,9 @@
 package com.mkolongo.heros.web.controllers;
 
 import com.mkolongo.heros.domain.entities.Gender;
-import com.mkolongo.heros.domain.entities.UserPrincipal;
 import com.mkolongo.heros.domain.models.binding.HeroCreateModel;
 import com.mkolongo.heros.service.HeroService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,8 +40,20 @@ public class HeroController {
     }
 
     @GetMapping("/details")
-    public String details(@AuthenticationPrincipal UserPrincipal userPrincipal, Model model) {
-        model.addAttribute("hero", userPrincipal.getUser().getHero());
+    public String details(Principal principal, Model model) {
+        model.addAttribute("hero", heroService.getHeroByUsername(principal.getName()));
         return "heroDetails";
+    }
+
+    @GetMapping("/opponents")
+    public String opponents(Model model, Principal principal) {
+        model.addAttribute("heroes", heroService.getAllHeroes(principal.getName()));
+        return "opponents";
+    }
+
+    @GetMapping("/fight/{opponentName}")
+    public String fight(@PathVariable String opponentName) {
+        // todo
+        return "fight";
     }
 }

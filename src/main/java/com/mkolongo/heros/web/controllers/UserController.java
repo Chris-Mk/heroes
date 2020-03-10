@@ -1,14 +1,11 @@
 package com.mkolongo.heros.web.controllers;
 
-import com.mkolongo.heros.domain.entities.UserPrincipal;
 import com.mkolongo.heros.domain.models.binding.UserRegisterModel;
 import com.mkolongo.heros.domain.models.service.UserServiceModel;
 import com.mkolongo.heros.domain.models.view.UserProfileModel;
 import com.mkolongo.heros.service.UserService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -52,12 +49,12 @@ public class UserController {
     }
 
     @GetMapping("/home")
-    public String home(@AuthenticationPrincipal UserPrincipal userPrincipal, Model model) {
-        if (userPrincipal.getUser().getHero() == null) {
+    public String home(Principal principal, Model model) {
+        if (!userService.hasHero(principal.getName())) {
             return "home-hero-not-created";
         }
 
-        model.addAttribute("profile", userService.getProfile(userPrincipal.getUsername()));
+        model.addAttribute("profile", userService.getProfile(principal.getName()));
         return "home-with-created-hero";
     }
 

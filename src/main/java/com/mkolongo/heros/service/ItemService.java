@@ -1,6 +1,5 @@
 package com.mkolongo.heros.service;
 
-import com.mkolongo.heros.domain.entities.Hero;
 import com.mkolongo.heros.domain.models.binding.ItemCreateModel;
 import com.mkolongo.heros.domain.models.view.ItemViewModel;
 
@@ -12,5 +11,5 @@ public interface ItemService {
 
     List<ItemViewModel> getAllItems();
 
-    void buyItem(String id, Hero hero);
+    void buyItem(String id, String username);
 }

@@ -14,6 +14,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -37,8 +38,9 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public void buyItem(String id, Hero hero) {
+    public void buyItem(String id, String username) {
         Item item = itemRepository.getOne(id);
+        Hero hero = heroRepository.findByUser_Username(username).orElseThrow();
 
         HeroItems heroItems = new HeroItems();
         heroItems.setItem(item);

@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/items")
@@ -46,8 +47,8 @@ public class ItemController {
     }
 
     @PostMapping("/merchant/{id}")
-    public String merchant(@PathVariable String id, @AuthenticationPrincipal UserPrincipal userPrincipal) {
-        itemService.buyItem(id, userPrincipal.getUser().getHero());
+    public String merchant(@PathVariable String id, Principal principal) {
+        itemService.buyItem(id, principal.getName());
         return "redirect:/heroes/details";
     }
 }

@@ -44,10 +44,20 @@ public class UserServiceImpl implements UserService {
                     if (Gender.MALE.name().equals(profileModel.getHeroGender())) {
                         profileModel.setHeroGender("/img/male.jpg");
                     } else {
-                        profileModel.setHeroGender("/img/female/jpg");
+                        profileModel.setHeroGender("/img/female.jpg");
                     }
                     return profileModel;
                 })
                 .orElseThrow(() -> new UsernameNotFoundException("Not found!"));
     }
+
+    @Override
+    public boolean hasHero(String username) {
+        return userRepository.findByUsername(username).map(user -> user.getHero() != null).get();
+    }
+
+    //    @Override
+//    public List<UserProfileModel> getAllUsers() {
+//        return mapper.map(userRepository.findAll(), new TypeToken<List<UserProfileModel>>() {}.getType());
+//    }
 }

@@ -11,9 +11,9 @@
         </div>
         <hr class="my-3"/>
         <div class="container">
-
             <div class="text-center">
-                <h2 th:text="|You have a hero. Buy items to make your hero stronger and later join the battle.|"></h2>
+                <h2>You have a hero. <a th:href="@{/items/merchant}">Buy items</a> to make your hero stronger or
+                    <a th:href="@{/heroes/opponents}">join the battle.</a></h2>
             </div>
         </div>
     </main>
