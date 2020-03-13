@@ -52,8 +52,11 @@ public class HeroController {
     }
 
     @GetMapping("/fight/{opponentName}")
-    public String fight(@PathVariable String opponentName) {
-        // todo
+    public String fight(Principal principal, @PathVariable String opponentName, Model model) {
+        String winner = heroService.fight(principal.getName(), opponentName);
+        model.addAttribute("winner", winner);
+        model.addAttribute("hero", heroService.getHeroByUsername(principal.getName()));
+        model.addAttribute("oppHero", heroService.getHeroByName(opponentName));
         return "fight";
     }
 }

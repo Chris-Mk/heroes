@@ -1,7 +1,7 @@
 package com.mkolongo.heros.service;
 
-import com.mkolongo.heros.domain.entities.Hero;
 import com.mkolongo.heros.domain.models.binding.HeroCreateModel;
+import com.mkolongo.heros.domain.models.view.HeroDetailsModel;
 import com.mkolongo.heros.domain.models.view.HeroViewModel;
 
 import java.util.List;
@@ -12,5 +12,9 @@ public interface HeroService {
 
     List<HeroViewModel> getAllHeroes(String heroName);
 
-    Hero getHeroByUsername(String username);
+    HeroDetailsModel getHeroByUsername(String username);
+
+    String fight(String username, String opponentName);
+
+    HeroViewModel getHeroByName(String heroName);
 }

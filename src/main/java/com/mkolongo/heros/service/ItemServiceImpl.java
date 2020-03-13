@@ -54,7 +54,7 @@ public class ItemServiceImpl implements ItemService {
         int sum = hero.getAttack() + hero.getDefence() +
                   hero.getStrength() + hero.getStamina();
 
-        if (sum > 20) {
+        if (sum > 200) {
             hero.setLevel(hero.getLevel() + 1);
         }
 

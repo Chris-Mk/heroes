@@ -16,7 +16,7 @@
                     <div class="col text-center" th:each="hero : ${heroes}" th:object="${hero}" th:unless="${heroes.isEmpty()}">
                         <img th:src="*{gender}" width="150">
                         <h2 class="text-white">[[*{name}]]</h2>
-                        <a class="btn btn-secondary" th:href="@{/heroes/fight/${name}(name=*{name})}">Fight</a>
+                        <a class="btn btn-secondary" th:href="@{/heroes/fight/{name}(name=*{name})}">Fight</a>
                     </div>
                     <div class="col text-center" th:if="${heroes.isEmpty()}">
                         <h2 class="text-white">There are opponents now, try again later!</h2>

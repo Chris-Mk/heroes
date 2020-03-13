@@ -12,16 +12,16 @@
             <div>
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="/img/MALE.jpg" width="150px" height="250"/>
-                        <h3 class="align-middle">Valkyrie</h3>
+                        <img th:src="${hero.gender}" width="150px" height="250"/>
+                        <h3 class="align-middle" th:text="${hero.name}"></h3>
                     </div>
                     <div class="col-md-4">
                         <h2>VS</h2>
-                        <h2>Valkyrie - winner</h2>
+                        <h2 th:text="|${winner} - winner|"></h2>
                     </div>
                     <div class="col-md-4">
-                        <img src="/img/FEMALE.jpg" width="150px" height="250"/>
-                        <h3 class="align-middle">wtwt</h3>
+                        <img th:src="${oppHero.gender}" width="150px" height="250"/>
+                        <h3 class="align-middle" th:text="${oppHero.name}"></h3>
                     </div>
                 </div>
             </div>

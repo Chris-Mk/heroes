@@ -10,4 +10,6 @@ public interface HeroRepository extends BaseRepository<Hero> {
 
     Optional<Hero> findByUser_Username(String user_username);
 
+    Optional<Hero> findByName(String heroName);
+
 }
